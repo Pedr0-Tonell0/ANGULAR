@@ -1,0 +1,33 @@
+<p>data-binding works!</p>
+
+{{title}}
+<br>
+{{title + "Template expression"}}
+<br>
+{{greeting}}
+<br>
+<button (click)="sayHello()">Greeting</button>
+<br>
+{{title}}
+<br>
+<input type="text" [value]="title"/>
+
+<br>
+
+{{inputValue}}
+<br>
+<input type="text" (input)="onChange($event.target)">
+<br>
+
+<app-book title="My book" (onValue)="showValue($event)"></app-book>
+
+<br>
+<br>
+<br>
+
+<p *ngIf="show">Hello world</p>
+<br>
+<br>
+<p *ngFor="let text of list">
+  {{text}}
+</p>

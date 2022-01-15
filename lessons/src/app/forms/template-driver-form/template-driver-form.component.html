@@ -1,0 +1,21 @@
+<p>template-driver-form works!</p>
+
+<form #myForm="ngForm" (submit)="onSubmit(myForm.value)">
+Name:<input type="text" ngModel name="firstName" required #firstName="ngModel">
+<span *ngIf="firstName.touched && !firstName.valid">Name invalid</span>
+  <br>
+Last Name: <input type="text" ngModel name="lastName" required #lastName="ngModel">
+<span *ngIf="lastName.touched && !lastName.valid">Name invalid</span>
+  <br>
+  Email: <input type="email" ngModel name="email" required email #email="ngModel">
+  <span *ngIf="email.touched && !email.valid && email.errors?.['email']">Email invalid</span>
+  <span *ngIf="email.touched && !email.valid && email.errors?.['required']">Email is empty</span>
+  <br>
+  Comment: <input type="text" [(ngModel)]="myModel.comment" name="comment">
+  <br>
+<span>Country</span>
+<select name="country" id="country" required [(ngModel)]="myModel.countryCode">
+<option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option></select>
+  <br>
+  <button type="submit" [disabled]="!myForm.valid">Send</button>
+</form>

@@ -1,0 +1,19 @@
+<p>reactive-form works!</p>
+<form [formGroup]="formGroup" (submit)="OnSubmit()">
+  Name: <input type="text" formControlName="firstName">
+  <span *ngIf="firstName?.touched && firstName?.invalid && firstName?.errors?.['required']">Name is required</span>
+  <span *ngIf="firstName?.touched && firstName?.invalid && firstName?.errors?.['minlength']">Min length is 4</span>
+<br>
+Last Name: <input type="text" formControlName="lastName">
+  <br>
+  Email: <input type="text" formControlName="email">
+  <br>
+  Phone Number: <input type="text" formControlName="phoneNumber">
+  <span *ngIf="phoneNumber?.touched && phoneNumber?.invalid && phoneNumber?.errors?.['InvalidphoneNumber']">Invalid format</span>
+  <br>
+  Id: <input type="text" formControlName="id">
+  <span *ngIf="id?.touched && id?.invalid && id?.errors?.['idInvalid']">Id invalid</span>
+  <br>
+<button type="submit" [disabled]="formGroup.invalid">Send</button>
+
+</form>
