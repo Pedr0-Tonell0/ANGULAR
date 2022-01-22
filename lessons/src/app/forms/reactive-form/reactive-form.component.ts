@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validator, ValidatorFn, Validators } from '@angular/forms';
+import { countries } from 'src/app/mock-data/countries';
 import { idValidator } from 'src/app/validators/id-validator';
 
 @Component({
@@ -9,7 +10,12 @@ import { idValidator } from 'src/app/validators/id-validator';
 })
 export class ReactiveFormComponent implements OnInit {
   formGroup: FormGroup;
+  countries = countries;
   constructor() {
+
+   }
+
+  ngOnInit(): void {
     this.formGroup = new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
@@ -20,9 +26,6 @@ export class ReactiveFormComponent implements OnInit {
       phoneNumber: new FormControl('',this.telephoneValidator(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
       )),id:new FormControl('',idValidator)
     })
-   }
-
-  ngOnInit(): void {
   }
 
   OnSubmit()
